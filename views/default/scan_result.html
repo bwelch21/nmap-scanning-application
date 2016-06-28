@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>Scan Result<hr></h1>
+<h3><b>Command:</b> {{=command}}
+    <br><br>Scan performed on {{=date}}
+    <br><br><b>Result:</b> <pre>{{=result}}</pre>
+</h3>
+<br><br><p style="font-size:150%">
+    If you received an error, make sure you entered a valid range/IP address and the options you selected are compatible with one another. You can visit <a href="http://nmap.org/book/man-briefoptions.html">this link</a> for more information.
+</p>

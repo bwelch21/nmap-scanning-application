@@ -1,0 +1,36 @@
+{{extend 'layout.html'}}
+<head>
+<script>
+var timer = null;
+function auto_reload()
+{
+	window.location = 'https://127.0.0.1:8000/nmap/default/scanning';
+}
+
+</script>
+
+<style>
+    .wrapper {
+            text-align: center;
+        }
+    #button {
+            position: absolute;
+
+        }
+    #gif {
+
+
+    }
+
+</style>
+</head>
+<body onload="timer = setTimeout('auto_reload()',6000);">
+<div class="loader"></div>
+<br><br><h1 style="text-align:center">
+    Scanning target...
+</h1>
+<div class="wrapper">
+    <button id="abort" type="button" onclick="location.href='https://127.0.0.1:8000/nmap/default/abort'">Abort Scan</button><br>
+    <img id="gif" src="http://www.arabianbusiness.com/skins/ab.main/gfx/loading_spinner.gif" height="90" width="90" >
+    </div>
+</body>

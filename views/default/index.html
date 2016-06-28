@@ -1,0 +1,59 @@
+{{extend 'layout.html'}}
+<html>
+    <head>
+        <script>
+            window.onload = function firstLoad(){
+                document.getElementById("moreInfo").style.visibility = "hidden";
+                document.getElementById("lessButton").style.visibility = "hidden";
+                document.getElementById("moreButton").style.visibility = "visible";
+            }
+            function displayLessOptions(){
+                document.getElementById("moreInfo").style.visibility = "hidden";
+                document.getElementById("quickScan").style.visibility = "visible";
+                document.getElementById("lessButton").style.visibility = "hidden";
+                document.getElementById("moreButton").style.visibility = "visible";
+            }
+            function displayMoreOptions(){
+                document.getElementById("moreInfo").style.visibility = "visible";
+                document.getElementById("quickScan").style.visibility = "hidden";
+                document.getElementById("moreButton").style.visibility = "hidden";
+                document.getElementById("lessButton").style.visibility = "visible";
+            }
+
+        </script>
+    </head>
+    <style>
+        #moreButton {
+            position:relative;
+            right:-80px;
+            top:-49px
+        }
+        #lessButton {
+            position:relative;
+            right:50px;
+            top:-49px;
+        }
+    </style>
+   <title>Nmap Web Portal</title>
+
+    <body>
+
+       <h1 style="text-align:center">Nmap Scanning Application</h1><br><br>
+        <div id="quickScan"><p>
+            {{=form1}}
+            </p></div>
+       <div align="center">
+           <button id="moreButton" type="button" onclick="displayMoreOptions()">More Options</button>
+           <button id="lessButton" type="button" onclick="displayLessOptions()">Less Options</button>
+       </div>
+      <div id="moreInfo"><p>{{=form2}}</p>
+
+       </div>
+       <h6 style="text-align:center">
+      <br><br><t style="font-size:150%"><a href="http://nmap.org/book/man-briefoptions.html">Click here</a> for a summary of the options included in Nmap.
+           Not all Nmap options are included in this portal.</t>
+       </h6>
+
+   </body>
+
+</html>
