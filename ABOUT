@@ -1,0 +1,22 @@
+The application uses the network administration tool Nmap to carry out scans. The application provides a more convenient 
+option than using Nmap from the command line (as it is primarily used). It makes use of the Web2Py web development framework 
+as its means building and maintaining the web app. Web2Py is a development framework that takes care of most of the back-end,
+server-side aspects of web development and allows its users to use Python to code all of the application logic. It's a very 
+useful framework that is growing in popularity due to its wide range of potential application.
+
+The application logic is straightforward. The home page holds two separate forms, one basic scan options and the other 
+advanced scan (hidden by default), and an option to display the advanced options. The user's input is taken in through the 
+forms upon submitting, and is then processed by the program. During processing, input validation is performed on each text 
+input and the command which will be used to execute the desired scan is built. Once the command is built, a 'subproccess' 
+call to the terminal is made and the Nmap scan is started as a background process.
+
+As the scan is carried out, the user is shown a screen informing them that the target(s) is/are being scanned and an option 
+to abort the scan if necessary. Nmap does not have a built-in way to quit scans (Ctrl-C must be used from the command line), 
+so the program keeps track of each instance of the process (the scan) running and uses the subprocess module in Python to 
+terminate that process when the user clicks the button.
+
+Every 6 seconds, the loading page refreshes, each time querying the process as to whether or not it has completed. If not, 
+the loading page is displayed again and the cycle continues. If it is finished, the user is redirected to the scan result 
+page where the results of the scan are displayed. The results of the scan are written to a text file that is stored on the 
+web server. Each file is given a unique name based on the date and time the scan was started. The contents of that file are 
+read by the program and are the results that the user is shown on the scan result page.
